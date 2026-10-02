@@ -5,7 +5,7 @@ on:
     types: [created]
 
 permissions:
-  contents: read
+  contents: write
   packages: write
 
 env:
@@ -96,7 +96,7 @@ jobs:
       - name: Upload ${{ matrix.version }} asset
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: ./release-bin/tty-ws-agent-ubuntu${{ matrix.version }}
